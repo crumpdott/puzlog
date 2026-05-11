@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class LevelManager : MonoBehaviour
     private string _SelectID = "";
     public static LevelManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
+    public LineRenderer LineRenderer;
     public int ElementDestroyCount = 3;
     public float ElementConnectRange = 1.5f;
 
@@ -21,7 +24,18 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        LineRendererUpdate();
+    }
+
+    private void LineRendererUpdate()
+    {
+        if(_SelectElements.Count >= 2)
+        {
+            LineRenderer.positionCount = _SelectElements.Count;
+            LineRenderer.SetPositions(_SelectElements.Select(element => element.transform.position).ToArray());
+            LineRenderer.gameObject.SetActive(true);
+        }
+        else LineRenderer.gameObject.SetActive(false);
     }
 
     private void ElementSpawn(int count)
