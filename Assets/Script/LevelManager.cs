@@ -1,14 +1,21 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-
+    private List<Element> _SelectElements = new List<Element>();
+    private string _SelectID = "";
+    public static LevelManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
+    public int ElementDestroyCount = 3;
+    public float ElementConnectRange = 1.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ElementSpawn(10);
+        Instance = this;
+        ElementSpawn(40);
     }
 
     // Update is called once per frame
@@ -23,7 +30,7 @@ public class LevelManager : MonoBehaviour
         float StartY = 17;
         float X = StartX;
         float Y = StartY;
-        float MaxX = 9;
+        float MaxX = 8;
 
         for(int i = 0; i < count; i++)
         {
@@ -42,4 +49,65 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
+
+    public void ElementDown(Element element)
+    {
+        _SelectElements.Add(element);
+        element.SetIsSelect(true);
+
+        _SelectID = element.ID;
+    }
+
+    public void ElementEnter(Element element)
+    {
+        if(_SelectID != element.ID) return;
+
+        if (element.IsSelect)
+        {
+            if(_SelectElements.Count >= 2 && _SelectElements[_SelectElements.Count - 2] == element)
+            {
+                var RemoveElement = _SelectElements[_SelectElements.Count - 1];
+                RemoveElement.SetIsSelect(false);
+                _SelectElements.Remove(RemoveElement);
+            }
+
+        } 
+        else
+        {
+            var Length = (_SelectElements[_SelectElements.Count - 1].transform.position - element.transform.position).magnitude;
+            if(Length < ElementConnectRange)
+            {
+                _SelectElements.Add(element);
+                element.SetIsSelect(true);
+            }
+        }
+    }
+
+    public void ElementUp(Element element)
+    {
+        if(_SelectElements.Count >= ElementDestroyCount)
+        {
+            DestroyElements(_SelectElements);
+        }
+        else
+        {
+            foreach(var ElementItem in _SelectElements)
+            {
+                ElementItem.SetIsSelect(false);
+            }
+        }
+
+        _SelectID = "";
+        _SelectElements.Clear();
+    }
+
+    private void DestroyElements(List<Element> elements)
+    {
+        foreach(var ElementItem in elements)
+        {
+            Destroy(ElementItem.gameObject);
+        }
+        ElementSpawn(elements.Count);
+    }
+    
 }
