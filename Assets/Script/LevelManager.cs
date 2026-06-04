@@ -3,28 +3,56 @@ using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UIElements;
+using UnityEngine.Assemblies;
 
 public class LevelManager : MonoBehaviour
 {
     private List<Element> _SelectElements = new List<Element>();
     private string _SelectID = "";
+    private int _Score = 0;
+    private float _CurrentTime = 60;
+    private bool _IsPlaying = true;
     public static LevelManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
     public LineRenderer LineRenderer;
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI TimerText;
+    public GameObject FinishDialog;
     public int ElementDestroyCount = 3;
     public float ElementConnectRange = 1.5f;
+    public float PlayTime = 60;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Instance = this;
         ElementSpawn(40);
+        ScoreText.text = "0";
+        _CurrentTime = PlayTime;
     }
 
     // Update is called once per frame
     void Update()
     {
         LineRendererUpdate();
+        TimerUpdate();
+    }
+
+    private void TimerUpdate()
+    {
+        if (_IsPlaying)
+        {
+            _CurrentTime -= Time.deltaTime;
+            if(_CurrentTime <= 0)
+            {
+                _CurrentTime = 0;
+                ElementUp();
+                _IsPlaying = false;
+                FinishDialog.SetActive(true);
+            }
+            TimerText.text = ((int)_CurrentTime).ToString();
+        }
     }
 
     private void LineRendererUpdate()
@@ -66,6 +94,7 @@ public class LevelManager : MonoBehaviour
 
     public void ElementDown(Element element)
     {
+        if(!_IsPlaying)return;
         _SelectElements.Add(element);
         element.SetIsSelect(true);
 
@@ -97,7 +126,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void ElementUp(Element element)
+    public void ElementUp()
     {
         if(_SelectElements.Count >= ElementDestroyCount)
         {
@@ -122,6 +151,12 @@ public class LevelManager : MonoBehaviour
             Destroy(ElementItem.gameObject);
         }
         ElementSpawn(elements.Count);
+        AddScore(elements.Count);
     }
     
+    private void AddScore(int elementCount)
+    {
+        _Score += (int)(elementCount * 100 * ( 1 + (elementCount - 3) * 0.1f ));
+        ScoreText.text = _Score.ToString();
+    }
 }
