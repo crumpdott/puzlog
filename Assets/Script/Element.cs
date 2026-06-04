@@ -19,7 +19,7 @@ public class Element : MonoBehaviour
 
     private void OnMouseUp()
     {
-        LevelManager.Instance.ElementUp(this);
+        LevelManager.Instance.ElementUp();
     }
 
     public void SetIsSelect(Boolean isSelect)
