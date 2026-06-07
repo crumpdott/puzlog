@@ -19,8 +19,6 @@ public class LevelManager : MonoBehaviour
     public int ElementDestroyCount = 3;
     public float ElementConnectRange = 1.5f;
     public float PlayTime = 60;
-    public Enemy[] Enemies;
-    public int DamagePerElement = 1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -151,20 +149,7 @@ public class LevelManager : MonoBehaviour
         }
         ElementSpawn(elements.Count);
         AddScore(elements.Count);
-        int damage = elements.Count * DamagePerElement;
-        AttackEnemy(damage);
-    }
-
-    private void AttackEnemy(int damage)
-    {
-        foreach(Enemy enemy in Enemies)
-        {
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-                return;
-            }
-        }
+        BattleManager.Instance.AttackEnemy(elements.Count);
     }
     
     private void AddScore(int elementCount)

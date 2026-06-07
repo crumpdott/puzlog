@@ -1,15 +1,30 @@
+using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public int MaxHp = 1;
-    public int Hp = 1;
+    private int _Hp = 1;
+    public TextMeshPro HpText;
+
+    public void Start()
+    {
+        _Hp = MaxHp;
+        UpdateHpText();
+    }
     public void TakeDamage(int damage)
     {
-        Hp -= damage;
-        if(Hp <= 0)
+        _Hp -= damage;
+        if(_Hp <= 0)
         {
             Destroy(gameObject);
+            return;
         }
+        UpdateHpText();
+    }
+
+    private void UpdateHpText()
+    {
+        HpText.text = _Hp + "/" + MaxHp;
     }
 }
