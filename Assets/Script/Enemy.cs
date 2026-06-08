@@ -6,6 +6,11 @@ public class Enemy : MonoBehaviour
     public int MaxHp = 1;
     private int _Hp = 1;
     public TextMeshPro HpText;
+    public int Money = 0;
+    public bool isDead
+    {
+        get {return _Hp <= 0; }
+    }
 
     public void Start()
     {

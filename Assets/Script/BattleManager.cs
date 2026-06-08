@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class BattleManager : MonoBehaviour
 
     public Enemy[] Enemies;
     public int DamagePerElement = 1;
+    public GameObject DeadDialog;
+    public GameObject ResultDialog;
 
     private void Awake()
     {
@@ -16,21 +19,35 @@ public class BattleManager : MonoBehaviour
     {
         int damage = elementCount * DamagePerElement;
         Enemy target = GetTargetEnemy();
-        if(target != null){
-            target.TakeDamage(damage);
-            return;
+        target.TakeDamage(damage);
+        Enemy nextTarget = GetTargetEnemy();
+        if(nextTarget == null)
+        {
+            EndTurn();
         }
+        return;
     }
 
     private Enemy GetTargetEnemy()
     {
         foreach (var enemy in Enemies)
         {
-            if(enemy != null)
+            if(enemy != null && !enemy.isDead)
             {
                 return enemy;
             }
         }
         return null;
+    }
+
+    public void PlayerDead()
+    {
+        DeadDialog.SetActive(true);
+    }
+
+    private void EndTurn()
+    {
+        PuzzleManager.Instance.StopPuzzle();
+        ResultDialog.SetActive(true);
     }
 }

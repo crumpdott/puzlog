@@ -9,17 +9,17 @@ public class Element : MonoBehaviour
 
     private void OnMouseDown()
     {
-        LevelManager.Instance.ElementDown(this);
+        PuzzleManager.Instance.ElementDown(this);
     }
 
     private void OnMouseEnter()
     {
-        LevelManager.Instance.ElementEnter(this);
+        PuzzleManager.Instance.ElementEnter(this);
     }
 
     private void OnMouseUp()
     {
-        LevelManager.Instance.ElementUp();
+        PuzzleManager.Instance.ElementUp();
     }
 
     public void SetIsSelect(Boolean isSelect)

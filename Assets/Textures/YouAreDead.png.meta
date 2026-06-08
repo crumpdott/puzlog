@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: ee031ba2c0db8403db96a76b809cce8d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6019710592739569489
+    second: YouAreDead_0
+  - first:
+      213: 4352805773504522016
+    second: YouAreDead_1
+  - first:
+      213: 3375523087685456429
+    second: YouAreDead_2
+  - first:
+      213: -2041290989750279669
+    second: YouAreDead_3
+  - first:
+      213: -1434151826036252344
+    second: YouAreDead_4
+  - first:
+      213: -8273294116301117801
+    second: YouAreDead_5
+  - first:
+      213: 3830111185805324722
+    second: YouAreDead_6
+  - first:
+      213: 2416016758351114511
+    second: YouAreDead_7
+  - first:
+      213: -8726978651970431575
+    second: YouAreDead_8
+  - first:
+      213: -3908598274596407973
+    second: YouAreDead_9
+  - first:
+      213: -8256590300409555174
+    second: YouAreDead_10
+  - first:
+      213: -931338736258370476
+    second: YouAreDead_11
+  - first:
+      213: 6363925803872536350
+    second: YouAreDead_12
+  - first:
+      213: -8861627751112041513
+    second: YouAreDead_13
+  - first:
+      213: 7842606921992146727
+    second: YouAreDead_14
+  - first:
+      213: -182265850971233174
+    second: YouAreDead_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: YouAreDead_0
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 257
+        width: 230
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15fe5eae3ee4a8350800000000000000
+      internalID: 6019710592739569489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_1
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 266
+        width: 165
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 027a102f9c5486c30800000000000000
+      internalID: 4352805773504522016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_2
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 255
+        width: 139
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d221f9c2d5448de20800000000000000
+      internalID: 3375523087685456429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_3
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 266
+        width: 175
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b02aab8f8a0eba3e0800000000000000
+      internalID: -2041290989750279669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_4
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 253
+        width: 142
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 841a12f338ed81ce0800000000000000
+      internalID: -1434151826036252344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_5
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 257
+        width: 234
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 796ea83c5da5f2d80800000000000000
+      internalID: -8273294116301117801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_6
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 244
+        width: 172
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b13d28a4d9472530800000000000000
+      internalID: 3830111185805324722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_7
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 235
+        width: 79
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01b8ece07a678120800000000000000
+      internalID: 2416016758351114511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_8
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 271
+        width: 178
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a592ee472b83e680800000000000000
+      internalID: -8726978651970431575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_9
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 257
+        width: 175
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b55f9f0f39ed1c9c0800000000000000
+      internalID: -3908598274596407973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_10
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 269
+        width: 161
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a171728fdd2ba6d80800000000000000
+      internalID: -8256590300409555174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_11
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 257
+        width: 167
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45432c39a583313f0800000000000000
+      internalID: -931338736258370476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_12
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 271
+        width: 178
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e17c3c41dc4315850800000000000000
+      internalID: 6363925803872536350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_13
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 257
+        width: 402
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db1933e28c250580800000000000000
+      internalID: -8861627751112041513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_14
+      rect:
+        serializedVersion: 2
+        x: 2114
+        y: 269
+        width: 161
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72f8c52917986dc60800000000000000
+      internalID: 7842606921992146727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YouAreDead_15
+      rect:
+        serializedVersion: 2
+        x: 2121
+        y: 257
+        width: 167
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64ec2a9c26787df0800000000000000
+      internalID: -182265850971233174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      YouAreDead_0: 6019710592739569489
+      YouAreDead_1: 4352805773504522016
+      YouAreDead_10: -8256590300409555174
+      YouAreDead_11: -931338736258370476
+      YouAreDead_12: 6363925803872536350
+      YouAreDead_13: -8861627751112041513
+      YouAreDead_14: 7842606921992146727
+      YouAreDead_15: -182265850971233174
+      YouAreDead_2: 3375523087685456429
+      YouAreDead_3: -2041290989750279669
+      YouAreDead_4: -1434151826036252344
+      YouAreDead_5: -8273294116301117801
+      YouAreDead_6: 3830111185805324722
+      YouAreDead_7: 2416016758351114511
+      YouAreDead_8: -8726978651970431575
+      YouAreDead_9: -3908598274596407973
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
