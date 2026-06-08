@@ -1,24 +1,20 @@
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.UIElements;
-using UnityEngine.Assemblies;
 
-public class LevelManager : MonoBehaviour
+public class PuzzleManager : MonoBehaviour
 {
     private List<Element> _SelectElements = new List<Element>();
     private string _SelectID = "";
     private int _Score = 0;
     private float _CurrentTime = 60;
     private bool _IsPlaying = true;
-    public static LevelManager Instance { get; private set;}
+    public static PuzzleManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
     public LineRenderer LineRenderer;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI TimerText;
-    public GameObject FinishDialog;
     public int ElementDestroyCount = 3;
     public float ElementConnectRange = 1.5f;
     public float PlayTime = 60;
@@ -46,10 +42,9 @@ public class LevelManager : MonoBehaviour
             _CurrentTime -= Time.deltaTime;
             if(_CurrentTime <= 0)
             {
-                _CurrentTime = 0;
+                StopPuzzle();
                 ElementUp();
-                _IsPlaying = false;
-                FinishDialog.SetActive(true);
+                BattleManager.Instance.PlayerDead();
             }
             TimerText.text = ((int)_CurrentTime).ToString();
         }
@@ -152,11 +147,18 @@ public class LevelManager : MonoBehaviour
         }
         ElementSpawn(elements.Count);
         AddScore(elements.Count);
+        BattleManager.Instance.AttackEnemy(elements.Count);
     }
     
     private void AddScore(int elementCount)
     {
         _Score += (int)(elementCount * 100 * ( 1 + (elementCount - 3) * 0.1f ));
         ScoreText.text = _Score.ToString();
+    }
+
+    public void StopPuzzle()
+    {
+        _CurrentTime = 0;
+        _IsPlaying = false;
     }
 }
