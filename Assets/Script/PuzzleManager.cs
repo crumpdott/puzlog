@@ -158,7 +158,11 @@ public class PuzzleManager : MonoBehaviour
 
     public void StopPuzzle()
     {
-        _CurrentTime = 0;
         _IsPlaying = false;
+    }
+
+    public int GetRemainTime()
+    {
+        return (int)_CurrentTime;
     }
 }

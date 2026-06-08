@@ -3,14 +3,13 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    public int TmpMoney = 0;
     public static BattleManager Instance { get; private set;}
-
     public Enemy[] Enemies;
     public int DamagePerElement = 1;
     public GameObject DeadDialog;
-    public GameObject ResultDialog;
 
-    private void Awake()
+    private void Start()
     {
         Instance = this;
     }
@@ -48,6 +47,6 @@ public class BattleManager : MonoBehaviour
     private void EndTurn()
     {
         PuzzleManager.Instance.StopPuzzle();
-        ResultDialog.SetActive(true);
+        ResultManager.Instance.StartResult();
     }
 }
