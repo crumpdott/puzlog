@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
         if(_Hp <= 0)
         {
             Destroy(gameObject);
+            BattleManager.Instance.TmpMoney += Money;
             return;
         }
         UpdateHpText();
