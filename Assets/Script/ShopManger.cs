@@ -1,16 +1,18 @@
+using TMPro;
 using UnityEngine;
 
 public class ShopManger : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public TextMeshProUGUI PlayerMoneyUI;
+    public static ShopManger Instance { get; private set;}
     void Start()
     {
-        
+        Instance = this;
+        UpdatePlayerMoney();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdatePlayerMoney()
     {
-        
+        PlayerMoneyUI.text = PlayerData.Money.ToString();
     }
 }
