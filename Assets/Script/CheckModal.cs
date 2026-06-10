@@ -14,10 +14,10 @@ public class CheckModal : MonoBehaviour
     private Action _OnConfirm;
     private Action _OnCancel;
 
-    public void Open(string title, string describe, string confirm="確定", string cancel="キャンセル", Action confirmAction=null, Action cancelAction=null)
+    public void Open(string title, string[] describes, string confirm="確定", string cancel="キャンセル", Action confirmAction=null, Action cancelAction=null)
     {
         TitleUI.text = title;
-        DescribeUI.text = describe;
+        DescribeUI.text = string.Join("\n",describes);
         ConfirmUI.text = confirm;
         CancelUI.text = cancel;
 

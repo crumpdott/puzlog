@@ -12,7 +12,7 @@ public class Artifact : MonoBehaviour
     {
         ArtifactButton.onClick.AddListener(() =>
         {
-            ShopManger.Instance.CheckModal.Open("購入確認", "このアーティファクトを買いますか？","購入","キャンセル",Purchase);
+            ShopManger.Instance.CheckModal.Open("購入確認", new[]{ArtifactData.Name,$"価格:{ArtifactData.Cost}",ArtifactData.detail},"購入","キャンセル",Purchase);
         });
     }
 
