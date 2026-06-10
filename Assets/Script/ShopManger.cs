@@ -1,12 +1,14 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ShopManger : MonoBehaviour
 {
     public TextMeshProUGUI PlayerMoneyUI;
-    public Transform[] ArtifactPositions;
-    public Artifact[] ArtifactPrefabs;
+    [FormerlySerializedAs("ArtifactPrefabs")]
+    public Artifact[] ArtifactSlots;
+    public ArtifactData[] ArtifactDatas;
     public static ShopManger Instance { get; private set;}
     public CheckModal CheckModal;
     void Start()
@@ -18,11 +20,20 @@ public class ShopManger : MonoBehaviour
 
     private void ShowArtifact()
     {
-        var artifacts = ArtifactPrefabs.OrderBy(_ => Random.value).Take(3).ToArray();
+        var selectedDatas = ArtifactDatas
+            .OrderBy(_ => Random.value)
+            .Take(ArtifactSlots.Length)
+            .ToArray();
 
-        for(int i = 0; i < artifacts.Length; i++)
+        for (int i = 0; i < ArtifactSlots.Length; i++)
         {
-            Instantiate(artifacts[i],ArtifactPositions[i]);
+            bool hasData = i < selectedDatas.Length;
+            ArtifactSlots[i].gameObject.SetActive(hasData);
+
+            if (hasData)
+            {
+                ArtifactSlots[i].SetData(selectedDatas[i]);
+            }
         }
     }
 
