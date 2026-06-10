@@ -11,6 +11,7 @@ public class CheckModal : MonoBehaviour
     public TextMeshProUGUI CancelUI;
     public Button ConfirmButton;
     public Button CancelButton;
+    public GameObject CancelButtonRoot;
     private Action _OnConfirm;
     private Action _OnCancel;
 
@@ -19,7 +20,11 @@ public class CheckModal : MonoBehaviour
         TitleUI.text = title;
         DescribeUI.text = string.Join("\n",describes);
         ConfirmUI.text = confirm;
-        CancelUI.text = cancel;
+        bool showCancelButton = cancel != null;
+        CancelButtonRoot.gameObject.SetActive(showCancelButton);
+        if(showCancelButton){
+            CancelUI.text = cancel;
+        }
 
         _OnConfirm = confirmAction;
         _OnCancel = cancelAction;
@@ -31,19 +36,23 @@ public class CheckModal : MonoBehaviour
     {
         ConfirmButton.onClick.AddListener(() =>
         {
-            _OnConfirm?.Invoke();
+            Action onConfirm = _OnConfirm;
             Close();
+            onConfirm?.Invoke();
         });
 
         CancelButton.onClick.AddListener(() =>
         {
-            _OnCancel?.Invoke();
+            Action onCancel = _OnCancel;
             Close();
+            onCancel?.Invoke();
         });
     }
 
     public void Close()
     {
+        _OnConfirm = null;
+        _OnCancel = null;
         gameObject.SetActive(false);
     }
 

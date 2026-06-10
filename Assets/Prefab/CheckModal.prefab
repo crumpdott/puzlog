@@ -482,6 +482,7 @@ MonoBehaviour:
   CancelUI: {fileID: 3159158980720182895}
   ConfirmButton: {fileID: 6235862802570823585}
   CancelButton: {fileID: 5106898825404317390}
+  CancelButtonRoot: {fileID: 1774626432663370496}
 --- !u!1 &3728139867239740631
 GameObject:
   m_ObjectHideFlags: 0
