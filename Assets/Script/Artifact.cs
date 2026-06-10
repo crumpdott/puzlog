@@ -30,6 +30,10 @@ public class Artifact : MonoBehaviour
         {
             PlayerData.Money -= ArtifactData.Cost;
             ShopManger.Instance.UpdatePlayerMoney();
+            gameObject.SetActive(false);
+        } else
+        {
+            ShopManger.Instance.CheckModal.Open("所持金不足!",new[]{"買えないよ!"},"確認",null);
         }
     }
 }
