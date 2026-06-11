@@ -7,13 +7,11 @@ public class PuzzleManager : MonoBehaviour
 {
     private List<Element> _SelectElements = new List<Element>();
     private string _SelectID = "";
-    private int _Score = 0;
     private float _CurrentTime = 60;
     private bool _IsPlaying = true;
     public static PuzzleManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
     public LineRenderer LineRenderer;
-    public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI TimerText;
     public int ElementDestroyCount = 3;
     public float ElementConnectRange = 1.5f;
@@ -24,7 +22,6 @@ public class PuzzleManager : MonoBehaviour
     {
         Instance = this;
         ElementSpawn(40);
-        ScoreText.text = "0";
         _CurrentTime = PlayTime;
     }
 
@@ -154,14 +151,7 @@ public class PuzzleManager : MonoBehaviour
             Destroy(ElementItem.gameObject);
         }
         ElementSpawn(elements.Count);
-        AddScore(elements.Count);
         BattleManager.Instance.AttackEnemy(elements.Count);
-    }
-    
-    private void AddScore(int elementCount)
-    {
-        _Score += (int)(elementCount * 100 * ( 1 + (elementCount - 3) * 0.1f ));
-        ScoreText.text = _Score.ToString();
     }
 
     public void StopPuzzle()
