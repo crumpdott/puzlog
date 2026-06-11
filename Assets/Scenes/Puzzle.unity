@@ -2162,6 +2162,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8241841700537236921, guid: 81a46197205384ff18f2b093931c2871, type: 3}
       propertyPath: MaxHp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241841700537236921, guid: 81a46197205384ff18f2b093931c2871, type: 3}
+      propertyPath: Attribute
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8752409602856189117, guid: 81a46197205384ff18f2b093931c2871, type: 3}
@@ -2633,6 +2637,8 @@ MonoBehaviour:
   - {fileID: 1688553125}
   DamagePerElement: 1
   DeadDialog: {fileID: 1272098789}
+  WeakRate: 1.5
+  ResistRate: 0.5
 --- !u!4 &1773139214
 Transform:
   m_ObjectHideFlags: 0
