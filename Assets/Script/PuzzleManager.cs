@@ -151,7 +151,7 @@ public class PuzzleManager : MonoBehaviour
             Destroy(ElementItem.gameObject);
         }
         ElementSpawn(elements.Count);
-        BattleManager.Instance.AttackEnemy(elements.Count);
+        BattleManager.Instance.AttackEnemy(elements);
     }
 
     public void StopPuzzle()

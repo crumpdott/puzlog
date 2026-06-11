@@ -263,3 +263,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Element
   ID: Wood
   SelectSprite: {fileID: 973201615935575086}
+  Attribute: 3
