@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Element
   ID: Water
   SelectSprite: {fileID: 6044450239535545474}
+  Attribute: 2
 --- !u!1 &6044450239535545474
 GameObject:
   m_ObjectHideFlags: 0

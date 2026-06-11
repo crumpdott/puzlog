@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Element
   ID: Fire
   SelectSprite: {fileID: 5406378786807804120}
+  Attribute: 1
 --- !u!1 &5406378786807804120
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,11 @@ public class PuzzleManager : MonoBehaviour
 {
     private List<Element> _SelectElements = new List<Element>();
     private string _SelectID = "";
-    private int _Score = 0;
     private float _CurrentTime = 60;
     private bool _IsPlaying = true;
     public static PuzzleManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
     public LineRenderer LineRenderer;
-    public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI TimerText;
     public int ElementDestroyCount = 3;
     public float ElementConnectRange = 1.5f;
@@ -24,7 +22,6 @@ public class PuzzleManager : MonoBehaviour
     {
         Instance = this;
         ElementSpawn(40);
-        ScoreText.text = "0";
         _CurrentTime = PlayTime;
     }
 
@@ -63,27 +60,35 @@ public class PuzzleManager : MonoBehaviour
 
     private void ElementSpawn(int count)
     {
-        float StartX = -8;
-        float StartY = 17;
-        float X = StartX;
-        float Y = StartY;
-        float MaxX = 8;
+        const float minX = -8f;
+        const float maxX = 8f;
+        const float startY = 17f;
+        const float rowSpacing = 2f;
+
+        float x = minX;
+        float y = startY;
 
         for(int i = 0; i < count; i++)
         {
-            float rndX = Random.Range(1f,3f);
-            float rndY = Random.Range(-1f,1f);
-            X += rndX;
-            Y += rndY;
-            
-            var Position = new Vector3(X, Y, 0);
-            Instantiate(ElementPrefabs[Random.Range(0,ElementPrefabs.Length)],Position,Quaternion.identity);
+            float nextX = x + Random.Range(1f, 3f);
 
-            if (X >= MaxX)
+            if (nextX > maxX)
             {
-                X = StartX;
-                Y += 2;
+                x = minX;
+                y += rowSpacing;
             }
+            else
+            {
+                x = nextX;
+            }
+
+            float spawnY = y + Random.Range(-1f, 1f);
+            var position = new Vector3(x, spawnY, 0);
+            Instantiate(
+                ElementPrefabs[Random.Range(0, ElementPrefabs.Length)],
+                position,
+                Quaternion.identity
+            );
         }
     }
 
@@ -146,14 +151,7 @@ public class PuzzleManager : MonoBehaviour
             Destroy(ElementItem.gameObject);
         }
         ElementSpawn(elements.Count);
-        AddScore(elements.Count);
-        BattleManager.Instance.AttackEnemy(elements.Count);
-    }
-    
-    private void AddScore(int elementCount)
-    {
-        _Score += (int)(elementCount * 100 * ( 1 + (elementCount - 3) * 0.1f ));
-        ScoreText.text = _Score.ToString();
+        BattleManager.Instance.AttackEnemy(elements);
     }
 
     public void StopPuzzle()
