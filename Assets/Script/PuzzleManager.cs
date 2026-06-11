@@ -63,27 +63,35 @@ public class PuzzleManager : MonoBehaviour
 
     private void ElementSpawn(int count)
     {
-        float StartX = -8;
-        float StartY = 17;
-        float X = StartX;
-        float Y = StartY;
-        float MaxX = 8;
+        const float minX = -8f;
+        const float maxX = 8f;
+        const float startY = 17f;
+        const float rowSpacing = 2f;
+
+        float x = minX;
+        float y = startY;
 
         for(int i = 0; i < count; i++)
         {
-            float rndX = Random.Range(1f,3f);
-            float rndY = Random.Range(-1f,1f);
-            X += rndX;
-            Y += rndY;
-            
-            var Position = new Vector3(X, Y, 0);
-            Instantiate(ElementPrefabs[Random.Range(0,ElementPrefabs.Length)],Position,Quaternion.identity);
+            float nextX = x + Random.Range(1f, 3f);
 
-            if (X >= MaxX)
+            if (nextX > maxX)
             {
-                X = StartX;
-                Y += 2;
+                x = minX;
+                y += rowSpacing;
             }
+            else
+            {
+                x = nextX;
+            }
+
+            float spawnY = y + Random.Range(-1f, 1f);
+            var position = new Vector3(x, spawnY, 0);
+            Instantiate(
+                ElementPrefabs[Random.Range(0, ElementPrefabs.Length)],
+                position,
+                Quaternion.identity
+            );
         }
     }
 
