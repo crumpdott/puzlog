@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 3768548006422409681}
   - component: {fileID: 1936179052175781263}
   - component: {fileID: 7484549096419016098}
+  - component: {fileID: 5220220036567377330}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -176,8 +177,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5943396, g: 0.29319397, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a0410460558b747c382c8082b9e69614, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -221,7 +222,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.4375
 --- !u!50 &1936179052175781263
 Rigidbody2D:
   serializedVersion: 5
@@ -264,3 +265,25 @@ MonoBehaviour:
   ID: Wood
   SelectSprite: {fileID: 973201615935575086}
   Attribute: 3
+--- !u!95 &5220220036567377330
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785370172967776008}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce8451473650b4a9da3ea20f78747278, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
