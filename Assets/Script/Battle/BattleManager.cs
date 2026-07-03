@@ -21,10 +21,10 @@ public class BattleManager : MonoBehaviour
     {
         float damage = elements.Count * DamagePerElement;
         Enemy target = GetTargetEnemy();
-        if(IsWeak(elements[0].Attribute, target.Attribute))
+        if(ElementAttributeCompatibility.IsWeak(elements[0].Attribute, target.Attribute))
         {
             damage *= WeakRate;
-        } else if (IsResist(elements[0].Attribute, target.Attribute))
+        } else if (ElementAttributeCompatibility.IsResist(elements[0].Attribute, target.Attribute))
         {
             damage *= ResistRate;
         }
@@ -62,27 +62,4 @@ public class BattleManager : MonoBehaviour
         ResultManager.Instance.StartResult();
     }
 
-    private bool IsWeak(Attribute el, Attribute en)
-    {
-        Attribute fire = Attribute.Fire;
-        Attribute water = Attribute.Water;
-        Attribute wood = Attribute.Wood;
-        if((el == fire && en == wood) || (el == water && en == fire) || (el == wood && en == water))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    private bool IsResist(Attribute el, Attribute en)
-    {
-        Attribute fire = Attribute.Fire;
-        Attribute water = Attribute.Water;
-        Attribute wood = Attribute.Wood;
-        if((el == fire && en == water) || (el == water && en == wood) || (el == wood && en == fire))
-        {
-            return true;
-        }
-        return false;
-    }
 }

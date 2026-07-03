@@ -3,13 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ShopManger : MonoBehaviour
+public class ShopManager : MonoBehaviour
 {
     public TextMeshProUGUI PlayerMoneyUI;
     [FormerlySerializedAs("ArtifactPrefabs")]
-    public Artifact[] ArtifactSlots;
+    public ArtifactShopItem[] ArtifactSlots;
     public ArtifactData[] ArtifactDatas;
-    public static ShopManger Instance { get; private set;}
+    public static ShopManager Instance { get; private set;}
     public CheckModal CheckModal;
     void Start()
     {

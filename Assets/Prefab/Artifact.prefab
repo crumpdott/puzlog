@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3e02aa9dad1040c78718c246baaf29f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Artifact
+  m_EditorClassIdentifier: Assembly-CSharp::ArtifactShopItem
   IconImg: {fileID: 3015838293360176105}
   CostUI: {fileID: 7647685709659863597}
   ArtifactData: {fileID: 0}

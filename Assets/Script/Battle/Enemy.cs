@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Attribute Attribute = Attribute.None;
+    public ElementAttribute Attribute = ElementAttribute.None;
     public int MaxHp = 1;
     private int _Hp = 1;
     public TextMeshPro HpText;

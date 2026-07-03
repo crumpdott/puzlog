@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Artifact : MonoBehaviour
+public class ArtifactShopItem : MonoBehaviour
 {
     public Image IconImg;
     public TextMeshProUGUI CostUI;
@@ -13,7 +13,7 @@ public class Artifact : MonoBehaviour
     {
         ArtifactButton.onClick.AddListener(() =>
         {
-            ShopManger.Instance.CheckModal.Open("購入確認", new[]{ArtifactData.Name,$"価格:{ArtifactData.Cost}",ArtifactData.detail},"購入","キャンセル",Purchase);
+            ShopManager.Instance.CheckModal.Open("購入確認", new[]{ArtifactData.Name,$"価格:{ArtifactData.Cost}",ArtifactData.detail},"購入","キャンセル",Purchase);
         });
     }
 
@@ -30,12 +30,12 @@ public class Artifact : MonoBehaviour
         if(PlayerData.Money >= ArtifactData.Cost)
         {
             PlayerData.Money -= ArtifactData.Cost;
-            ShopManger.Instance.UpdatePlayerMoney();
+            ShopManager.Instance.UpdatePlayerMoney();
             PlayerData.Artifacts.Add(ArtifactData.NameId);
             gameObject.SetActive(false);
         } else
         {
-            ShopManger.Instance.CheckModal.Open("所持金不足!",new[]{"買えないよ!"},"確認",null);
+            ShopManager.Instance.CheckModal.Open("所持金不足!",new[]{"買えないよ!"},"確認",null);
         }
     }
 }
