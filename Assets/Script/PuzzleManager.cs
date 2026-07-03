@@ -89,20 +89,7 @@ public class PuzzleManager : MonoBehaviour
                 position,
                 Quaternion.identity
             );
-            SetRandomEffect(elementObject.GetComponent<Element>());
-        }
-    }
-
-    private void SetRandomEffect(Element element)
-    {
-        if (element == null) return;
-
-        int piggyBankCount = PlayerData.CountArtifact(ArtifactNameId.PiggyBank);
-        float goldChance = Mathf.Clamp01(piggyBankCount * 0.05f);
-
-        if (Random.value < goldChance)
-        {
-            element.Effect = ElementEffect.Gold;
+            ElementEffectAssigner.AssignRandomEffect(elementObject.GetComponent<Element>());
         }
     }
 

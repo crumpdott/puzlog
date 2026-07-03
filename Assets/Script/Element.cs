@@ -6,7 +6,7 @@ public class Element : MonoBehaviour
     public string ID;
     public GameObject SelectSprite;
     public bool IsSelect { get; private set; }
-    public Attribute Attribute = Attribute.None;
+    public ElementAttribute Attribute = ElementAttribute.None;
     public ElementEffect Effect = ElementEffect.None;
 
     private void OnMouseDown()
