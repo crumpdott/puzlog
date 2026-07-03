@@ -8,6 +8,7 @@ public class Artifact : MonoBehaviour
     public TextMeshProUGUI CostUI;
     public ArtifactData ArtifactData;
     public Button ArtifactButton;
+
     void Start()
     {
         ArtifactButton.onClick.AddListener(() =>
@@ -30,6 +31,7 @@ public class Artifact : MonoBehaviour
         {
             PlayerData.Money -= ArtifactData.Cost;
             ShopManger.Instance.UpdatePlayerMoney();
+            PlayerData.Artifacts.Add(ArtifactData.NameId);
             gameObject.SetActive(false);
         } else
         {
