@@ -892,7 +892,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3e02aa9dad1040c78718c246baaf29f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Artifact
+  m_EditorClassIdentifier: Assembly-CSharp::ArtifactShopItem
 --- !u!4 &895610039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6462742161141775498, guid: 1be5bfe8053be4efc9d14a04db74dccd, type: 3}
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3e02aa9dad1040c78718c246baaf29f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Artifact
+  m_EditorClassIdentifier: Assembly-CSharp::ArtifactShopItem
 --- !u!1001 &1454577124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3e02aa9dad1040c78718c246baaf29f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Artifact
+  m_EditorClassIdentifier: Assembly-CSharp::ArtifactShopItem
 --- !u!1 &1789907987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 1836758231}
   - component: {fileID: 1836758230}
   m_Layer: 0
-  m_Name: ShopManger
+  m_Name: ShopManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d1e6955c1ac4556b774aa1543862c8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopManger
+  m_EditorClassIdentifier: Assembly-CSharp::ShopManager
   PlayerMoneyUI: {fileID: 238221076}
   ArtifactSlots:
   - {fileID: 627686878}
