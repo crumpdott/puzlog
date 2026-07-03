@@ -7,4 +7,5 @@ public class ArtifactData : ScriptableObject
     public Sprite Icon;
     public int Cost;
     public string detail;
+    public ArtifactNameId NameId;
 }

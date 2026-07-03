@@ -84,11 +84,25 @@ public class PuzzleManager : MonoBehaviour
 
             float spawnY = y + Random.Range(-1f, 1f);
             var position = new Vector3(x, spawnY, 0);
-            Instantiate(
+            var elementObject = Instantiate(
                 ElementPrefabs[Random.Range(0, ElementPrefabs.Length)],
                 position,
                 Quaternion.identity
             );
+            SetRandomEffect(elementObject.GetComponent<Element>());
+        }
+    }
+
+    private void SetRandomEffect(Element element)
+    {
+        if (element == null) return;
+
+        int piggyBankCount = PlayerData.CountArtifact(ArtifactNameId.PiggyBank);
+        float goldChance = Mathf.Clamp01(piggyBankCount * 0.05f);
+
+        if (Random.value < goldChance)
+        {
+            element.Effect = ElementEffect.Gold;
         }
     }
 
@@ -146,9 +160,18 @@ public class PuzzleManager : MonoBehaviour
 
     private void DestroyElements(List<Element> elements)
     {
+        int AddMoney = 0;
         foreach(var ElementItem in elements)
         {
+            if(ElementItem.Effect == ElementEffect.Gold)
+            {
+                AddMoney++;
+            }
             Destroy(ElementItem.gameObject);
+        }
+        if (AddMoney > 0)
+        {
+            PlayerData.PiggyBankTmp += AddMoney;
         }
         ElementSpawn(elements.Count);
         BattleManager.Instance.AttackEnemy(elements);
