@@ -60,9 +60,9 @@ public class PuzzleManager : MonoBehaviour
 
     private void ElementSpawn(int count)
     {
-        const float minX = -8f;
-        const float maxX = 8f;
-        const float startY = 17f;
+        const float minX = -6.6f;
+        const float maxX = 6.6f;
+        const float startY = 2.5f;
         const float rowSpacing = 2f;
 
         float x = minX;
