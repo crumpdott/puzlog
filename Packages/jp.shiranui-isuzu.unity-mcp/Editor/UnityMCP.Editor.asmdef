@@ -1,0 +1,24 @@
+{
+  "name": "UnityMCP.Editor",
+  "rootNamespace": "",
+  "references": [
+    "Newtonsoft.Json"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": true,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "Newtonsoft.Json.dll",
+    "Microsoft.CodeAnalysis.dll",
+    "Microsoft.CodeAnalysis.CSharp.dll",
+    "System.Collections.Immutable.dll",
+    "System.Reflection.Metadata.dll"
+  ],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
