@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CheckModal : MonoBehaviour
 {
+    private static readonly Vector3 ConfirmButtonDefaultPosition = new Vector3(220, -390, 0);
+    private static readonly Vector3 ConfirmButtonSinglePosition = new Vector3(0, -390, 0);
+
     public TextMeshProUGUI TitleUI;
     public TextMeshProUGUI DescribeUI;
     public TextMeshProUGUI ConfirmUI;
@@ -22,6 +25,9 @@ public class CheckModal : MonoBehaviour
         ConfirmUI.text = confirm;
         bool showCancelButton = cancel != null;
         CancelButtonRoot.gameObject.SetActive(showCancelButton);
+        ConfirmButton.transform.parent.localPosition = showCancelButton
+            ? ConfirmButtonDefaultPosition
+            : ConfirmButtonSinglePosition;
         if(showCancelButton){
             CancelUI.text = cancel;
         }
