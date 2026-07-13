@@ -15,11 +15,34 @@
 - mainブランチでの作業は行わず，ブランチを切ってから作業することを徹底する
 - やりたいことを受け取った際はその内容に応じたブランチを切ること
 - remoteはSSH
+- 新しい要素を実装するプロンプトが入力されたとき，それまでの作業内容を確認してコミットをする
+- 成果物の修正の場合はまだコミットしない
 
 ## 導入済みMCP
 
 - Unity MCP, Google Drive, Githubを導入済み
 - 必要に応じてツールを使って
+
+## Unity MCPについて
+
+- Unity Editor、Scene、GameObject、Component、Build Settings、Play Modeなど、Unityを操作する場合はUnity MCPを利用したときのみに制限する。
+- Unity MCPを利用できない状態で、Unityのバッチモード、Scene YAMLの直接編集、別のGUI操作などへ迂回してUnityを操作しない。
+- Unity MCPに接続できない場合は実装を進めず、原因を調査してUnity MCPへ接続できる状態に戻すことを第一目標とする。
+- 接続確認では、Unityプロジェクトの検出、対象プロジェクトへの接続、接続状態がhealthyであることを順に確認する。
+- Unity MCPはUDPブロードキャストによる検出に最大30秒程度かかることがあるため、再起動直後は待機してから再確認する。
+- 接続できない場合は、UnityとUnity MCPの起動状態、設定ポート、残留しているUnity MCPのNodeプロセス、ポート競合を調査する。残留プロセスを終了する場合は、対象をpuzlog用Unity MCPに限定し、事前に許可を得る。
+- Unity MCPプロセスを終了すると現在のMCP接続も切れるため、終了後はCodexとUnityを再起動してから再接続する。
+
+## Unity MCPでの実装・検証
+
+- `unity_execute_code`へ大きな処理を一度に渡さず、Scene作成、UI配置、参照設定、保存などの小さな単位に分割して実行する。
+- `unity_execute_code`内で日本語文字列を渡す場合は、文字化けを防ぐため`\uXXXX`形式のUnicodeエスケープを使用する。
+- Unityを変更する前に、Edit ModeかPlay Modeか、現在開いているSceneが対象Sceneかを確認する。対象Sceneは明示的に開いてから変更する。
+- Sceneを変更した後は、`MarkSceneDirty`と`SaveScene`を明示的に実行し、保存後にSceneファイルまたはHierarchyで対象要素が存在することを確認する。
+- Play Mode中にSceneやSerializedObjectを保存しない。Play Modeを終了し、Edit Modeへ戻ったことを確認してから変更・保存する。
+- 動作確認前にConsoleをクリアし、確認後にエラー数と警告数を確認する。`console_getLogs`が失敗する場合は、`console_getCount`とUnityの`Editor.log`を使用する。
+- `ScreenCapture.CaptureScreenshot`は非同期なので、必要に応じてPlayer Loop更新とView再描画を行い、ファイルの生成を確認してから画像を読む。
+- TextMeshProの日本語は既存の日本語フォントアセットを利用し、必要な字形を`TryAddCharacters`で追加する。実行中に新しい動的フォントアセットを生成しない。
 
 ## 仕様書について
 
