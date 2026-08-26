@@ -65,6 +65,8 @@ public class DifficultySelectUI : MonoBehaviour
 
     private void OpenGame()
     {
+        PlayerData.Round = 1;
+        PlayerData.ReloadCountInCurrentRound = 0;
         SceneManager.LoadScene("Puzzle");
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 public static class PlayerData
 {
     public static int Money = 0;
+    public static int Round = 1;
+    public static int ReloadCountInCurrentRound = 0;
     public static int PiggyBankTmp = 0;
     public static List<ArtifactNameId> Artifacts = new List<ArtifactNameId>();
 
