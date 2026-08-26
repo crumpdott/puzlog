@@ -8,6 +8,12 @@ public class Element : MonoBehaviour
     public bool IsSelect { get; private set; }
     public ElementAttribute Attribute = ElementAttribute.None;
     public ElementEffect Effect = ElementEffect.None;
+    public GameObject GoldSignifier;
+
+    private void Awake()
+    {
+        UpdateEffectSignifier();
+    }
 
     private void OnMouseDown()
     {
@@ -28,5 +34,19 @@ public class Element : MonoBehaviour
     {
         IsSelect = isSelect;
         SelectSprite.SetActive(isSelect);
+    }
+
+    public void SetEffect(ElementEffect effect)
+    {
+        Effect = effect;
+        UpdateEffectSignifier();
+    }
+
+    private void UpdateEffectSignifier()
+    {
+        if (GoldSignifier != null)
+        {
+            GoldSignifier.SetActive(Effect == ElementEffect.Gold);
+        }
     }
 }
