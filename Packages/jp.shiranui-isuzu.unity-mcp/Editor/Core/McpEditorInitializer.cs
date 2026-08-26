@@ -20,8 +20,21 @@ namespace UnityMCP.Editor.Core
 
         static McpEditorInitializer()
         {
+            // The MCP server must only run in the main interactive Editor process.
+            // AssetImportWorker / batchmode processes share the project settings and
+            // would otherwise race for the same HTTP port (#13).
+            if (ShouldSkipServerInCurrentProcess())
+            {
+                return;
+            }
+
             AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
             AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+
+            // Quitting is not a domain reload, so nothing else would tear the server down —
+            // without this the Editor exits leaving its descriptor behind, and clients keep
+            // trying to reach a port that is gone.
+            EditorApplication.quitting += OnEditorQuitting;
 
             // Initial setup via delayCall (first load only — afterAssemblyReload handles reloads)
             EditorApplication.delayCall += Initialize;
@@ -29,6 +42,11 @@ namespace UnityMCP.Editor.Core
 
         private static void Initialize()
         {
+            if (ShouldSkipServerInCurrentProcess())
+            {
+                return;
+            }
+
             // Skip if already initialized (afterAssemblyReload may have already run)
             if (McpServiceManager.Instance.TryGetService<McpHttpServer>(out _))
             {
@@ -38,8 +56,35 @@ namespace UnityMCP.Editor.Core
             InitializeServer();
         }
 
+        private static bool ShouldSkipServerInCurrentProcess()
+        {
+            if (Application.isBatchMode)
+            {
+                return true;
+            }
+
+            var args = System.Environment.GetCommandLineArgs();
+            foreach (var arg in args)
+            {
+                if (arg.IndexOf("AssetImportWorker", System.StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private static void InitializeServer()
         {
+            if (ShouldSkipServerInCurrentProcess())
+            {
+                if (McpSettings.instance.detailedLogs)
+                    Debug.Log("[McpEditorInitializer] Skipping MCP server startup (batchmode or AssetImportWorker process)");
+
+                return;
+            }
+
             Debug.Log("[McpEditorInitializer] Initializing Unity MCP system...");
 
             var settings = McpSettings.instance;
@@ -108,7 +153,21 @@ namespace UnityMCP.Editor.Core
             SessionState.SetInt(SessionKeyBoundPort, server.BoundPort);
             SessionState.SetBool(SessionKeyWasRunning, server.IsRunning);
 
-            server.Dispose();
+            // The descriptor stays: the server returns on the same port in a moment, and
+            // withdrawing it would make clients drop the instance and any active selection.
+            server.Dispose(withdrawDescriptor: false);
+            McpServiceManager.Instance.RemoveService<McpHttpServer>();
+        }
+
+        private static void OnEditorQuitting()
+        {
+            if (!McpServiceManager.Instance.TryGetService<McpHttpServer>(out var server))
+            {
+                return;
+            }
+
+            SessionState.SetBool(SessionKeyWasRunning, false);
+            server.Dispose(withdrawDescriptor: true);
             McpServiceManager.Instance.RemoveService<McpHttpServer>();
         }
 
