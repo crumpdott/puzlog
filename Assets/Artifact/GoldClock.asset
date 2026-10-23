@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
-  m_Name: Art4
+  m_Name: GoldClock
   m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
-  Name: Test4
+  Name: "\u91D1\u306E\u7F6E\u304D\u6642\u8A08"
   Icon: {fileID: 3504873655554973472, guid: d065b07bfd44d412784e8e02b651daab, type: 3}
-  Cost: 40
-  detail: "\u3053\u308C\u306F\u30C6\u30B9\u30C84\u3067\u3059"
+  Cost: 50
+  detail: "\u53CE\u5165\u500D\u7387+0.5\n1000\u4E07\u5186\u3092\u76EE\u6307\u305B"
+  NameId: 5

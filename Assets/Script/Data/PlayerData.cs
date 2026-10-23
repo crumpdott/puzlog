@@ -67,6 +67,9 @@ public static class PlayerData
                 AttributeAttackPower[(int)ElementAttribute.Wood] += 2f;
                 AttributeAttackPower[(int)ElementAttribute.Fire] -= 1f;
                 break;
+            case ArtifactNameId.GoldClock:
+                IncomeMultiplier += 0.5f;
+                break;
         }
     }
 }

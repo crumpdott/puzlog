@@ -5,4 +5,5 @@ public enum ArtifactNameId
     Fireball,
     CrackedCrystalBall,
     Spinach,
+    GoldClock,
 }

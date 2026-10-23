@@ -29,6 +29,7 @@ public class ClearManager : MonoBehaviour
             ArtifactNameId.Fireball => "ファイヤボール",
             ArtifactNameId.CrackedCrystalBall => "割れた水晶玉",
             ArtifactNameId.Spinach => "ほうれん草",
+            ArtifactNameId.GoldClock => "金の置き時計",
             _ => id.ToString(),
         };
     }
