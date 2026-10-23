@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
   Name: "\u8C5A\u306E\u8CAF\u91D1\u7BB1"
   Icon: {fileID: -5792511334730316588, guid: 3a8812008e4934ff28a7e84c9b69ec00, type: 3}
-  Cost: 40
+  Cost: 25
   detail: "\u5168\u3066\u306E\u30A8\u30EC\u30E1\u30F3\u30C8\u306B\u7279\u6B8A\u52B9\u679C[\u91D1]\u3092\u4ED8\u4E0E\u3059\u308B\u78BA\u7387+5%"
   NameId: 1

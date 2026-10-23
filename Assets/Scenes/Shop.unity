@@ -960,7 +960,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -973,12 +973,12 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
+  m_fontSize: 38.95
   m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2202,6 +2202,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1aa2e659ab59847519afb0878248c561, type: 2}
   - {fileID: 11400000, guid: e5e063f2509a0420c833f93b22b0e955, type: 2}
   - {fileID: 11400000, guid: 624fd0c4a1a5a47b882f66e23ea0f515, type: 2}
+  - {fileID: 11400000, guid: 6a309dfd7b19b4322aafdf6ef4c1d424, type: 2}
+  - {fileID: 11400000, guid: b5f18d47b6abb4bde9a5b5a9a53e9c8d, type: 2}
+  - {fileID: 11400000, guid: c634f9220628d4580a8110dca2126842, type: 2}
+  - {fileID: 11400000, guid: 13abe78572d044551a0aa4971f491d86, type: 2}
+  - {fileID: 11400000, guid: 1a9a60c6ade3e4ed99010116900afd9d, type: 2}
+  - {fileID: 11400000, guid: b36d9174dee7d454f8fad251fff8e395, type: 2}
+  - {fileID: 11400000, guid: 97f90b99581724acca0999f16bf8e4ef, type: 2}
+  - {fileID: 11400000, guid: 85263e0015b8b4385a1ad672e21badd7, type: 2}
+  - {fileID: 11400000, guid: 0655330c3bb6b465397c68768c51a750, type: 2}
+  - {fileID: 11400000, guid: e20d4c89829954bb28e3f7c2adbc8093, type: 2}
   CheckModal: {fileID: 895610040}
   ReloadButton: {fileID: 2062938110}
   ReloadButtonText: {fileID: 880168946}

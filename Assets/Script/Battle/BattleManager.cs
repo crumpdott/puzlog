@@ -29,7 +29,7 @@ public class BattleManager : MonoBehaviour
         Enemy target = GetTargetEnemy();
         if (target == null || elements.Count == 0) return;
         ElementAttribute attribute = elements[0].Attribute;
-        float damage = elements.Count + 2f * (1f + PlayerData.AttributeAttackPower[(int)attribute]) + PlayerData.BaseAttackPower;
+        float damage = elements.Count + 2f * (1f + PlayerData.AttributeAttackPower[(int)attribute]) + PlayerData.CurrentBaseAttackPower;
         float affinity = 1f;
         if(ElementAttributeCompatibility.IsWeak(elements[0].Attribute, target.Attribute))
         {

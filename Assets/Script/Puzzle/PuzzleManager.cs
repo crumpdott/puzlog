@@ -34,7 +34,9 @@ public class PuzzleManager : MonoBehaviour
     {
         Instance = this;
         ElementSpawn(30);
-        _CurrentTime = Mathf.Max(1f, PlayTime - (PlayerData.Round - 1));
+        _CurrentTime = Mathf.Max(1f, PlayTime - (PlayerData.Round - 1)
+            - PlayerData.CountArtifact(ArtifactNameId.FingerCot)
+            + 2 * PlayerData.CountArtifact(ArtifactNameId.Hourglass));
         if (RoundText != null) RoundText.text = $"ラウンド {PlayerData.Round}/{PlayerData.LastRound}";
         if (ShuffleButton != null) ShuffleButton.onClick.AddListener(Shuffle);
         if (ShuffleBottom != null) _ShuffleBottomRestPosition = ShuffleBottom.position;
@@ -136,7 +138,7 @@ public class PuzzleManager : MonoBehaviour
             float spawnY = y + Random.Range(-1f, 1f);
             var position = new Vector3(x, spawnY, 0);
             var elementObject = Instantiate(
-                ElementPrefabs[Random.Range(0, ElementPrefabs.Length)],
+                ChooseElementPrefab(),
                 position,
                 Quaternion.identity
             );
@@ -144,6 +146,28 @@ public class PuzzleManager : MonoBehaviour
             ElementEffectAssigner.AssignRandomEffect(element);
             if (i < guaranteedCritical) element.SetEffect(element.Effect | ElementEffect.Critical);
         }
+    }
+
+    private GameObject ChooseElementPrefab()
+    {
+        int totalWeight = 0;
+        foreach (var prefab in ElementPrefabs)
+        {
+            var element = prefab.GetComponent<Element>();
+            if (element != null) totalWeight += Mathf.Max(0, PlayerData.ElementSpawnWeights[(int)element.Attribute]);
+        }
+
+        if (totalWeight <= 0) return ElementPrefabs[Random.Range(0, ElementPrefabs.Length)];
+
+        int pick = Random.Range(0, totalWeight);
+        foreach (var prefab in ElementPrefabs)
+        {
+            var element = prefab.GetComponent<Element>();
+            if (element == null) continue;
+            pick -= Mathf.Max(0, PlayerData.ElementSpawnWeights[(int)element.Attribute]);
+            if (pick < 0) return prefab;
+        }
+        return ElementPrefabs[ElementPrefabs.Length - 1];
     }
 
     public void ElementDown(Element element)

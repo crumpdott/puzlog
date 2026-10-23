@@ -30,6 +30,16 @@ public class ClearManager : MonoBehaviour
             ArtifactNameId.CrackedCrystalBall => "割れた水晶玉",
             ArtifactNameId.Spinach => "ほうれん草",
             ArtifactNameId.GoldClock => "金の置き時計",
+            ArtifactNameId.CreditCard => "クレジットカード",
+            ArtifactNameId.FingerCot => "指サック",
+            ArtifactNameId.Hourglass => "砂時計",
+            ArtifactNameId.PickDriver => "ピックが付いた電動ドライバー",
+            ArtifactNameId.FireFlower => "ファイヤーフラワー",
+            ArtifactNameId.RainCloud => "雨雲",
+            ArtifactNameId.Shiitake => "しいたけ",
+            ArtifactNameId.Guitar => "ギター",
+            ArtifactNameId.InkSquid => "インクまみれのイカ",
+            ArtifactNameId.Acorn => "どんぐり",
             _ => id.ToString(),
         };
     }
