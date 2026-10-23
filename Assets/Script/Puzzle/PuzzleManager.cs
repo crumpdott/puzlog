@@ -6,16 +6,26 @@ using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
+    private enum ShufflePhase { Idle, Rising, Falling }
+
     private List<Element> _SelectElements = new List<Element>();
     private string _SelectID = "";
     private float _CurrentTime = 60;
     private bool _IsPlaying = true;
+    private Vector2 _ShuffleBottomRestPosition;
+    private ShufflePhase _ShufflePhase;
+    private float _ShufflePhaseTime;
+    private int _PendingShuffles;
     public static PuzzleManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
     public LineRenderer LineRenderer;
     public TextMeshProUGUI TimerText;
     public TextMeshProUGUI RoundText;
     public Button ShuffleButton;
+    public Rigidbody2D ShuffleBottom;
+    [Min(0.01f)] public float ShuffleLiftDistance = 0.8f;
+    [Min(0.01f)] public float ShuffleRiseDuration = 0.06f;
+    [Min(0.01f)] public float ShuffleReturnDuration = 0.12f;
     public int ElementDestroyCount = 3;
     public float PlayTime = 60;
 
@@ -27,6 +37,7 @@ public class PuzzleManager : MonoBehaviour
         _CurrentTime = Mathf.Max(1f, PlayTime - (PlayerData.Round - 1));
         if (RoundText != null) RoundText.text = $"ラウンド {PlayerData.Round}/{PlayerData.LastRound}";
         if (ShuffleButton != null) ShuffleButton.onClick.AddListener(Shuffle);
+        if (ShuffleBottom != null) _ShuffleBottomRestPosition = ShuffleBottom.position;
     }
 
     private void OnDestroy()
@@ -39,6 +50,37 @@ public class PuzzleManager : MonoBehaviour
     {
         LineRendererUpdate();
         TimerUpdate();
+    }
+
+    private void FixedUpdate()
+    {
+        if (ShuffleBottom == null) return;
+
+        if (_ShufflePhase == ShufflePhase.Idle)
+        {
+            if (_PendingShuffles == 0) return;
+            _PendingShuffles--;
+            _ShufflePhase = ShufflePhase.Rising;
+            _ShufflePhaseTime = 0f;
+        }
+
+        _ShufflePhaseTime += Time.fixedDeltaTime;
+        if (_ShufflePhase == ShufflePhase.Rising)
+        {
+            float progress = Mathf.Clamp01(_ShufflePhaseTime / ShuffleRiseDuration);
+            ShuffleBottom.MovePosition(_ShuffleBottomRestPosition + Vector2.up * (ShuffleLiftDistance * progress));
+            if (progress >= 1f)
+            {
+                _ShufflePhase = ShufflePhase.Falling;
+                _ShufflePhaseTime = 0f;
+            }
+        }
+        else
+        {
+            float progress = Mathf.Clamp01(_ShufflePhaseTime / ShuffleReturnDuration);
+            ShuffleBottom.MovePosition(_ShuffleBottomRestPosition + Vector2.up * (ShuffleLiftDistance * (1f - progress)));
+            if (progress >= 1f) _ShufflePhase = ShufflePhase.Idle;
+        }
     }
 
     private void TimerUpdate()
@@ -187,6 +229,7 @@ public class PuzzleManager : MonoBehaviour
     public void StopPuzzle()
     {
         _IsPlaying = false;
+        _PendingShuffles = 0;
         CancelSelection();
     }
 
@@ -205,15 +248,7 @@ public class PuzzleManager : MonoBehaviour
 
     public void Shuffle()
     {
-        if (!_IsPlaying) return;
-        Vector2 origin = new Vector2(0f, -15f);
-        foreach (var element in FindObjectsByType<Element>())
-        {
-            var body = element.GetComponent<Rigidbody2D>();
-            if (body == null) continue;
-            Vector2 direction = ((Vector2)element.transform.position - origin).normalized;
-            direction.x += Random.Range(-0.3f, 0.3f);
-            body.AddForce(direction.normalized * Random.Range(5f, 9f), ForceMode2D.Impulse);
-        }
+        if (!_IsPlaying || ShuffleBottom == null) return;
+        _PendingShuffles++;
     }
 }
