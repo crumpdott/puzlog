@@ -8,6 +8,9 @@ public class ArtifactShopItem : MonoBehaviour
     public TextMeshProUGUI CostUI;
     public ArtifactData ArtifactData;
     public Button ArtifactButton;
+    public Button KeepButton;
+    public TextMeshProUGUI KeepButtonText;
+    public int SlotIndex;
 
     void Start()
     {
@@ -15,6 +18,7 @@ public class ArtifactShopItem : MonoBehaviour
         {
             ShopManager.Instance.CheckModal.Open("購入確認", new[]{ArtifactData.Name,$"価格:{ArtifactData.Cost}",ArtifactData.detail},"購入","キャンセル",Purchase);
         });
+        if (KeepButton != null) KeepButton.onClick.AddListener(() => ShopManager.Instance.ToggleKeep(SlotIndex));
     }
 
     public void SetData(ArtifactData data)
@@ -22,7 +26,7 @@ public class ArtifactShopItem : MonoBehaviour
         ArtifactData = data;
         IconImg.sprite = data.Icon;
         CostUI.text = data.Cost.ToString();
-
+        if (KeepButtonText != null) KeepButtonText.text = PlayerData.KeptSlots[SlotIndex] ? "解除" : "キープ";
     }
 
     public void Purchase()
@@ -32,6 +36,7 @@ public class ArtifactShopItem : MonoBehaviour
             PlayerData.Money -= ArtifactData.Cost;
             ShopManager.Instance.UpdatePlayerMoney();
             PlayerData.Artifacts.Add(ArtifactData.NameId);
+            ShopManager.Instance.PurchaseSlot(SlotIndex);
             gameObject.SetActive(false);
         } else
         {

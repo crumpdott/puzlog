@@ -8,14 +8,11 @@ public static class ElementEffectAssigner
     {
         if (element == null) return;
 
-        element.SetEffect(ElementEffect.None);
-
         int piggyBankCount = PlayerData.CountArtifact(ArtifactNameId.PiggyBank);
         float goldChance = Mathf.Clamp01(piggyBankCount * GoldChancePerPiggyBank);
-
-        if (Random.value < goldChance)
-        {
-            element.SetEffect(ElementEffect.Gold);
-        }
+        ElementEffect effect = ElementEffect.None;
+        if (Random.value < goldChance) effect |= ElementEffect.Gold;
+        if (Random.value < PlayerData.CriticalElementChance) effect |= ElementEffect.Critical;
+        element.SetEffect(effect);
     }
 }

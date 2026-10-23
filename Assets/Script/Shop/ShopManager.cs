@@ -21,6 +21,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+        for (int i = 0; i < ArtifactSlots.Length; i++) ArtifactSlots[i].SlotIndex = i;
         ReloadButton.onClick.AddListener(ReloadArtifacts);
         UpdatePlayerMoney();
         UpdateReloadButton();
@@ -34,21 +35,50 @@ public class ShopManager : MonoBehaviour
 
     private void ShowArtifact()
     {
-        var selectedDatas = ArtifactDatas
+        for (int i = 0; i < ArtifactSlots.Length; i++)
+            PlayerData.ShopOffers[i] = PlayerData.KeptSlots[i] ? PlayerData.KeptOffers[i] : null;
+
+        var available = ArtifactDatas
+            .Where(data => data != null && data.NameId != ArtifactNameId.None && data.Cost >= 0)
+            .GroupBy(data => data.NameId)
+            .Select(group => group.First())
+            .Where(data => !PlayerData.ShopOffers.Contains(data))
             .OrderBy(_ => Random.value)
-            .Take(ArtifactSlots.Length)
-            .ToArray();
+            .ToList();
 
         for (int i = 0; i < ArtifactSlots.Length; i++)
         {
-            bool hasData = i < selectedDatas.Length;
+            if (!PlayerData.KeptSlots[i] && available.Count > 0)
+            {
+                PlayerData.ShopOffers[i] = available[0];
+                available.RemoveAt(0);
+            }
+            bool hasData = PlayerData.ShopOffers[i] != null;
             ArtifactSlots[i].gameObject.SetActive(hasData);
 
             if (hasData)
             {
-                ArtifactSlots[i].SetData(selectedDatas[i]);
+                ArtifactSlots[i].SetData(PlayerData.ShopOffers[i]);
             }
         }
+        UpdateReloadButton();
+    }
+
+    public void ToggleKeep(int slot)
+    {
+        if (slot < 0 || slot >= ArtifactSlots.Length || PlayerData.ShopOffers[slot] == null) return;
+        PlayerData.KeptSlots[slot] = !PlayerData.KeptSlots[slot];
+        PlayerData.KeptOffers[slot] = PlayerData.KeptSlots[slot] ? PlayerData.ShopOffers[slot] : null;
+        ArtifactSlots[slot].SetData(PlayerData.ShopOffers[slot]);
+        UpdateReloadButton();
+    }
+
+    public void PurchaseSlot(int slot)
+    {
+        PlayerData.ShopOffers[slot] = null;
+        PlayerData.KeptOffers[slot] = null;
+        PlayerData.KeptSlots[slot] = false;
+        UpdateReloadButton();
     }
 
     public void UpdatePlayerMoney()
@@ -59,10 +89,12 @@ public class ShopManager : MonoBehaviour
     private void UpdateReloadButton()
     {
         ReloadButtonText.text = $"リロード\n{CurrentReloadCost}円";
+        ReloadButton.interactable = PlayerData.KeptSlots.Take(ArtifactSlots.Length).Any(kept => !kept);
     }
 
     public void ReloadArtifacts()
     {
+        if (PlayerData.KeptSlots.Take(ArtifactSlots.Length).All(kept => kept)) return;
         int cost = CurrentReloadCost;
 
         if (PlayerData.Money < cost)

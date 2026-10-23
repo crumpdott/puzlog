@@ -27,6 +27,7 @@ public class DifficultySelectUI : MonoBehaviour
         confirmButton.onClick.AddListener(OpenGame);
         confirmButton.interactable = false;
         difficultyDetailPanel.SetActive(false);
+        for (int i = 1; i < difficultyButtons.Length; i++) difficultyButtons[i].interactable = false;
     }
 
     private void OnDestroy()
@@ -65,8 +66,7 @@ public class DifficultySelectUI : MonoBehaviour
 
     private void OpenGame()
     {
-        PlayerData.Round = 1;
-        PlayerData.ReloadCountInCurrentRound = 0;
+        PlayerData.StartNewRun();
         SceneManager.LoadScene("Puzzle");
     }
 }

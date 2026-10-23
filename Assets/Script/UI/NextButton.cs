@@ -12,6 +12,11 @@ public class NextButton : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
+            if (SceneManager.GetActiveScene().name == "Puzzle" && PlayerData.Round >= PlayerData.LastRound)
+            {
+                SceneManager.LoadScene("Clear");
+                return;
+            }
             if (AdvanceRound)
             {
                 PlayerData.Round++;
