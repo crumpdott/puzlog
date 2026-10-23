@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
-  m_Name: Art2
+  m_Name: Spinach
   m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
-  Name: Test2
-  Icon: {fileID: 3233399730787976324, guid: 13a47e420480648d0822f1d68a9f682f, type: 3}
-  Cost: 20
-  detail: "\u3053\u308C\u306F\u30C6\u30B9\u30C82\u3067\u3059"
+  Name: "\u307B\u3046\u308C\u3093\u8349"
+  Icon: {fileID: -6676353620821625011, guid: 7bdacd5b165424d57b96a6161144f2ea, type: 3}
+  Cost: 8
+  detail: "\u6728\u653B\u6483\u529B+2 \u706B\u653B\u6483\u529B-1\n\u8339\u3067\u305F\u308A\u6C34\u306B\u6652\u3057\u305F\u308A\u3057\u3066\u306D"
+  NameId: 4

@@ -23,6 +23,13 @@ public class ClearManager : MonoBehaviour
 
     private static string GetName(ArtifactNameId id)
     {
-        return id == ArtifactNameId.PiggyBank ? "豚の貯金箱" : id.ToString();
+        return id switch
+        {
+            ArtifactNameId.PiggyBank => "豚の貯金箱",
+            ArtifactNameId.Fireball => "ファイヤボール",
+            ArtifactNameId.CrackedCrystalBall => "割れた水晶玉",
+            ArtifactNameId.Spinach => "ほうれん草",
+            _ => id.ToString(),
+        };
     }
 }

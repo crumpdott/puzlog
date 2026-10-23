@@ -2197,10 +2197,10 @@ MonoBehaviour:
   - {fileID: 1413025741}
   - {fileID: 1454577126}
   ArtifactDatas:
-  - {fileID: 11400000, guid: 2057c3d06825d4a02bf5d9f7a2454ed1, type: 2}
   - {fileID: 11400000, guid: 2c03e9a591d68435b9911aff21792737, type: 2}
+  - {fileID: 11400000, guid: 2057c3d06825d4a02bf5d9f7a2454ed1, type: 2}
+  - {fileID: 11400000, guid: 1aa2e659ab59847519afb0878248c561, type: 2}
   - {fileID: 11400000, guid: e5e063f2509a0420c833f93b22b0e955, type: 2}
-  - {fileID: 11400000, guid: 624fd0c4a1a5a47b882f66e23ea0f515, type: 2}
   CheckModal: {fileID: 895610040}
   ReloadButton: {fileID: 2062938110}
   ReloadButtonText: {fileID: 880168946}

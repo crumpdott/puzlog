@@ -35,7 +35,7 @@ public class ArtifactShopItem : MonoBehaviour
         {
             PlayerData.Money -= ArtifactData.Cost;
             ShopManager.Instance.UpdatePlayerMoney();
-            PlayerData.Artifacts.Add(ArtifactData.NameId);
+            PlayerData.AddArtifact(ArtifactData.NameId);
             ShopManager.Instance.PurchaseSlot(SlotIndex);
             gameObject.SetActive(false);
         } else

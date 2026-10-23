@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
-  m_Name: Art1
+  m_Name: CrackedCrystalBall
   m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
-  Name: Test1
-  Icon: {fileID: 3329831472253524692, guid: fefcf5f7009df49cf87dd5168d50d51b, type: 3}
-  Cost: 10
-  detail: "\u3053\u308C\u306F\u30C6\u30B9\u30C81\u3067\u3059"
+  Name: "\u5272\u308C\u305F\u6C34\u6676\u7389"
+  Icon: {fileID: 3233399730787976324, guid: 13a47e420480648d0822f1d68a9f682f, type: 3}
+  Cost: 8
+  detail: "\u6C34\u653B\u6483\u529B+2 \u6728\u653B\u6483\u529B-1\n\u5360\u3044\u304C\u3067\u304D\u306A\u3044"
+  NameId: 3

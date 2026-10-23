@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
-  m_Name: Art3
+  m_Name: Fireball
   m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
-  Name: Test3
-  Icon: {fileID: -6676353620821625011, guid: 7bdacd5b165424d57b96a6161144f2ea, type: 3}
-  Cost: 30
-  detail: "\u3053\u308C\u306F\u30C6\u30B9\u30C83\u3067\u3059"
+  Name: "\u30D5\u30A1\u30A4\u30E4\u30DC\u30FC\u30EB"
+  Icon: {fileID: 3329831472253524692, guid: fefcf5f7009df49cf87dd5168d50d51b, type: 3}
+  Cost: 8
+  detail: "\u706B\u653B\u6483\u529B+2 \u6C34\u653B\u6483\u529B-1\n\u6575\u3092\u71C3\u3084\u305D\u3046"
+  NameId: 2

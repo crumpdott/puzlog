@@ -49,4 +49,24 @@ public static class PlayerData
 
         return count;
     }
+
+    public static void AddArtifact(ArtifactNameId nameId)
+    {
+        Artifacts.Add(nameId);
+        switch (nameId)
+        {
+            case ArtifactNameId.Fireball:
+                AttributeAttackPower[(int)ElementAttribute.Fire] += 2f;
+                AttributeAttackPower[(int)ElementAttribute.Water] -= 1f;
+                break;
+            case ArtifactNameId.CrackedCrystalBall:
+                AttributeAttackPower[(int)ElementAttribute.Water] += 2f;
+                AttributeAttackPower[(int)ElementAttribute.Wood] -= 1f;
+                break;
+            case ArtifactNameId.Spinach:
+                AttributeAttackPower[(int)ElementAttribute.Wood] += 2f;
+                AttributeAttackPower[(int)ElementAttribute.Fire] -= 1f;
+                break;
+        }
+    }
 }
