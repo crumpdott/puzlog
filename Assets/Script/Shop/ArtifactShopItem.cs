@@ -31,7 +31,7 @@ public class ArtifactShopItem : MonoBehaviour
 
     public void Purchase()
     {
-        if(PlayerData.Money >= ArtifactData.Cost)
+        if(PlayerData.Money - ArtifactData.Cost >= PlayerData.MinimumMoney)
         {
             PlayerData.Money -= ArtifactData.Cost;
             ShopManager.Instance.UpdatePlayerMoney();

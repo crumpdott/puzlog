@@ -1320,6 +1320,7 @@ MonoBehaviour:
   - {fileID: 756803444460484885, guid: 5ae0463a669d24356b6c91a3705279fe, type: 3}
   - {fileID: 2827016599528372964, guid: c124f7f18a7d842b5b571234ad0116a4, type: 3}
   - {fileID: 2785370172967776008, guid: f531e2f3955ff4aec8c5d1fdc6856c2c, type: 3}
+  ExplosionPrefab: {fileID: 756803444460484885, guid: fbf5de550647a41758b1278a210d1dc8, type: 3}
   LineRenderer: {fileID: 1636595977}
   TimerText: {fileID: 292432298}
   RoundText: {fileID: 1701006444}
@@ -2556,7 +2557,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2983,7 +2984,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2

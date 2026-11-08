@@ -1804,7 +1804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7647685709659863597, guid: 5204f6eb2171b4b0d87055cccafc393e, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 67.75
       objectReference: {fileID: 0}
     - target: {fileID: 7647685709659863597, guid: 5204f6eb2171b4b0d87055cccafc393e, type: 3}
       propertyPath: m_fontSizeMax
@@ -1952,7 +1952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7647685709659863597, guid: 5204f6eb2171b4b0d87055cccafc393e, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 67.75
       objectReference: {fileID: 0}
     - target: {fileID: 7647685709659863597, guid: 5204f6eb2171b4b0d87055cccafc393e, type: 3}
       propertyPath: m_fontSizeMax
@@ -2212,6 +2212,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85263e0015b8b4385a1ad672e21badd7, type: 2}
   - {fileID: 11400000, guid: 0655330c3bb6b465397c68768c51a750, type: 2}
   - {fileID: 11400000, guid: e20d4c89829954bb28e3f7c2adbc8093, type: 2}
+  - {fileID: 11400000, guid: fbb6b4c15ce224dfe9eddb7e05dc1fc1, type: 2}
+  - {fileID: 11400000, guid: 43d71c463b61d4603baebabf5dfabcc2, type: 2}
+  - {fileID: 11400000, guid: b5edc4616023543efb587fc8ed83025b, type: 2}
+  - {fileID: 11400000, guid: 548a91a36e3824145a6162d6bc89dc0a, type: 2}
+  - {fileID: 11400000, guid: 51db13317340049e58e74fbf1afa324e, type: 2}
+  - {fileID: 11400000, guid: 3f6b3385369c046fa86c5d7bf4e481c6, type: 2}
+  - {fileID: 11400000, guid: 68406316b6d244ccf9136e38ffcadccb, type: 2}
+  - {fileID: 11400000, guid: b790fd09884a044d18879d53032b91ac, type: 2}
+  - {fileID: 11400000, guid: 1ce6c9cb981814189887dc993768d7f8, type: 2}
+  - {fileID: 11400000, guid: 08d8c74b97b844dfb86c288d77d26e10, type: 2}
+  - {fileID: 11400000, guid: f0c0e5a48a4e948a58c833dc0986aa90, type: 2}
+  - {fileID: 11400000, guid: d81c625374bdf4ebf947c77194395f7b, type: 2}
+  - {fileID: 11400000, guid: e0f8dc9180a5e486883d74fac879284f, type: 2}
+  - {fileID: 11400000, guid: 8d108aaf746304ea6b6f550041c84ab9, type: 2}
+  - {fileID: 11400000, guid: e81fa352f558b4712aaf963fa1d2582e, type: 2}
   CheckModal: {fileID: 895610040}
   ReloadButton: {fileID: 2062938110}
   ReloadButtonText: {fileID: 880168946}
@@ -2755,7 +2770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7647685709659863597, guid: 5204f6eb2171b4b0d87055cccafc393e, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 67.75
       objectReference: {fileID: 0}
     - target: {fileID: 7647685709659863597, guid: 5204f6eb2171b4b0d87055cccafc393e, type: 3}
       propertyPath: m_fontSizeMax

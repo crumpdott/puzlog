@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: "\u30AE\u30BF\u30FC"
   Icon: {fileID: 21300000, guid: fb1545e4268484a4fb82bdfc6b1e4c6d, type: 3}
   Cost: 20
-  detail: "\u4F1A\u5FC3\u7387+1\n\u96FB\u52D5\u30C9\u30EA\u30EB\u3092\u7528\u610F\u3057\u3066"
+  detail: "\u4F1A\u5FC3\u7387+5\n\u96FB\u52D5\u30C9\u30EA\u30EB\u3092\u7528\u610F\u3057\u3066"
   NameId: 13

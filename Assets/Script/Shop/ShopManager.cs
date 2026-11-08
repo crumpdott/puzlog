@@ -97,7 +97,7 @@ public class ShopManager : MonoBehaviour
         if (PlayerData.KeptSlots.Take(ArtifactSlots.Length).All(kept => kept)) return;
         int cost = CurrentReloadCost;
 
-        if (PlayerData.Money < cost)
+        if (PlayerData.Money - cost < PlayerData.MinimumMoney)
         {
             CheckModal.Open("所持金不足!", new[] {"リロードできないよ!"}, "確認", null);
             return;

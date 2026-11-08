@@ -15,6 +15,7 @@ public static class ElementEffectAssigner
         ElementEffect effect = ElementEffect.None;
         if (Random.value < goldChance) effect |= ElementEffect.Gold;
         if (Random.value < PlayerData.CriticalElementChance) effect |= ElementEffect.Critical;
+        if (Random.value < Mathf.Clamp01(PlayerData.InstantKillElementChance)) effect |= ElementEffect.InstantKill;
         element.SetEffect(effect);
     }
 }

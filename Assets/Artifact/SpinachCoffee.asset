@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
+  m_Name: SpinachCoffee
+  m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
+  Name: "\u307B\u3046\u308C\u3093\u8349\u3068\u73C8\u7432\u306E\u30BB\u30C3\u30C8"
+  Icon: {fileID: 21300000, guid: 08f619df2e05f4643b1f4fab7c468574, type: 3}
+  Cost: 20
+  detail: "\u57FA\u672C\u653B\u6483\u529B+4 \u6C34\u51FA\u73FE\u7387-2\n\u5C3F\u8DEF\u7D50\u77F3\u306B\u306A\u308D\u3046\uFF01"
+  NameId: 18

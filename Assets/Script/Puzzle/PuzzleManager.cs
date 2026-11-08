@@ -18,6 +18,7 @@ public class PuzzleManager : MonoBehaviour
     private int _PendingShuffles;
     public static PuzzleManager Instance { get; private set;}
     public GameObject[] ElementPrefabs;
+    public GameObject ExplosionPrefab;
     public LineRenderer LineRenderer;
     public TextMeshProUGUI TimerText;
     public TextMeshProUGUI RoundText;
@@ -33,10 +34,8 @@ public class PuzzleManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        ElementSpawn(30);
-        _CurrentTime = Mathf.Max(1f, PlayTime - (PlayerData.Round - 1)
-            - PlayerData.CountArtifact(ArtifactNameId.FingerCot)
-            + 2 * PlayerData.CountArtifact(ArtifactNameId.Hourglass));
+        ElementSpawn(PlayerData.InitialElementCount);
+        _CurrentTime = Mathf.Max(1f, PlayTime - (PlayerData.Round - 1) + PlayerData.TimeModifier);
         if (RoundText != null) RoundText.text = $"ラウンド {PlayerData.Round}/{PlayerData.LastRound}";
         if (ShuffleButton != null) ShuffleButton.onClick.AddListener(Shuffle);
         if (ShuffleBottom != null) _ShuffleBottomRestPosition = ShuffleBottom.position;
@@ -137,14 +136,19 @@ public class PuzzleManager : MonoBehaviour
 
             float spawnY = y + Random.Range(-1f, 1f);
             var position = new Vector3(x, spawnY, 0);
+            bool explosion = i >= guaranteedCritical && ExplosionPrefab != null
+                && Random.value < Mathf.Clamp01(PlayerData.ExplosionElementChance);
             var elementObject = Instantiate(
-                ChooseElementPrefab(),
+                explosion ? ExplosionPrefab : ChooseElementPrefab(),
                 position,
                 Quaternion.identity
             );
             var element = elementObject.GetComponent<Element>();
-            ElementEffectAssigner.AssignRandomEffect(element);
-            if (i < guaranteedCritical) element.SetEffect(element.Effect | ElementEffect.Critical);
+            if (!explosion)
+            {
+                ElementEffectAssigner.AssignRandomEffect(element);
+                if (i < guaranteedCritical) element.SetEffect(element.Effect | ElementEffect.Critical);
+            }
         }
     }
 
@@ -177,6 +181,47 @@ public class PuzzleManager : MonoBehaviour
         element.SetIsSelect(true);
 
         _SelectID = element.ID;
+    }
+
+    public void Explode(Element center)
+    {
+        if (!_IsPlaying || center == null || !center.IsExplosion) return;
+        CancelSelection();
+
+        var all = FindObjectsByType<Element>(FindObjectsSortMode.None);
+        DestroyElements(CollectExplosionElements(center, all), true);
+    }
+
+    private static List<Element> CollectExplosionElements(Element center, Element[] all)
+    {
+        var remaining = new Dictionary<Element, int> { [center] = Mathf.Max(1, PlayerData.ExplosionRange) };
+        var queue = new Queue<Element>();
+        queue.Enqueue(center);
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+            int steps = current.IsExplosion ? Mathf.Max(1, PlayerData.ExplosionRange) : remaining[current];
+            if (steps <= 0) continue;
+            foreach (var candidate in all)
+            {
+                if (candidate == current || !AreTouching(current, candidate)) continue;
+                int nextSteps = steps - 1;
+                if (remaining.TryGetValue(candidate, out int previous) && previous >= nextSteps) continue;
+                remaining[candidate] = nextSteps;
+                queue.Enqueue(candidate);
+            }
+        }
+
+        return remaining.Keys.ToList();
+    }
+
+    private static bool AreTouching(Element first, Element second)
+    {
+        var firstCollider = first.GetComponent<CircleCollider2D>();
+        var secondCollider = second.GetComponent<CircleCollider2D>();
+        if (firstCollider == null || secondCollider == null) return false;
+        float radius = firstCollider.bounds.extents.x + secondCollider.bounds.extents.x;
+        return Vector2.Distance(first.transform.position, second.transform.position) <= radius + 0.05f;
     }
 
     public void ElementEnter(Element element)
@@ -229,10 +274,14 @@ public class PuzzleManager : MonoBehaviour
         _SelectElements.Clear();
     }
 
-    private void DestroyElements(List<Element> elements)
+    private void DestroyElements(List<Element> elements, bool explosion = false)
     {
         int AddMoney = 0;
         int criticalCount = 0;
+        var attackGroups = explosion
+            ? elements.Where(element => !element.IsExplosion && element.Attribute != ElementAttribute.None)
+                .GroupBy(element => element.Attribute).OrderBy(group => group.Key).Select(group => group.ToList()).ToList()
+            : null;
         foreach(var ElementItem in elements)
         {
             if((ElementItem.Effect & ElementEffect.Gold) != 0)
@@ -246,7 +295,8 @@ public class PuzzleManager : MonoBehaviour
         {
             PlayerData.PiggyBankTmp += AddMoney;
         }
-        BattleManager.Instance.AttackEnemy(elements);
+        if (explosion) BattleManager.Instance.AttackEnemyGroups(attackGroups);
+        else BattleManager.Instance.AttackEnemy(elements);
         if (_IsPlaying) ElementSpawn(elements.Count, Mathf.Max(0, criticalCount - 1));
     }
 

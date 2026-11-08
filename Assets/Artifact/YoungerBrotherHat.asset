@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
+  m_Name: YoungerBrotherHat
+  m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
+  Name: "\u5F1F\u306E\u5E3D\u5B50"
+  Icon: {fileID: 21300000, guid: 5bc83dc48a54e43dc9805c99327070cd, type: 3}
+  Cost: 50
+  detail: "\u4F1A\u5FC3\u7387+1 \u4F1A\u5FC3\u529B+0.01\n\u2260\u5144"
+  NameId: 23
