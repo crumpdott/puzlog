@@ -15,12 +15,23 @@ public class Enemy : MonoBehaviour
 
     public void Start()
     {
+        RefreshForRound();
+    }
+    public void RefreshForRound()
+    {
         _Hp = MaxHp;
         UpdateHpText();
+        var renderer = GetComponentInChildren<SpriteRenderer>();
+        if (renderer != null)
+        {
+            renderer.color = Attribute == ElementAttribute.Fire ? new Color(1f, 0.56f, 0.48f)
+                : Attribute == ElementAttribute.Water ? new Color(0.48f, 0.74f, 1f)
+                : new Color(0.54f, 0.9f, 0.55f);
+        }
     }
     public void TakeDamage(int damage)
     {
-        _Hp -= damage;
+        _Hp = Mathf.Max(0, _Hp - Mathf.Max(0, damage));
         if(_Hp <= 0)
         {
             Destroy(gameObject);

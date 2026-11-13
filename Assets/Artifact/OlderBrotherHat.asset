@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89582b1a0dee84dcfb55addf66b0a2bb, type: 3}
-  m_Name: Art1
+  m_Name: OlderBrotherHat
   m_EditorClassIdentifier: Assembly-CSharp::ArtifactData
-  Name: Test1
-  Icon: {fileID: 3329831472253524692, guid: fefcf5f7009df49cf87dd5168d50d51b, type: 3}
-  Cost: 10
-  detail: "\u3053\u308C\u306F\u30C6\u30B9\u30C81\u3067\u3059"
+  Name: "\u5144\u306E\u5E3D\u5B50"
+  Icon: {fileID: 21300000, guid: c295457bfe6a84f54a8e0bcae5939327, type: 3}
+  Cost: 40
+  detail: "\u57FA\u672C\u653B\u6483\u529B+5 \u53CE\u5165+1\n\u914D\u7BA1\u5DE5\uFF1F"
+  NameId: 22

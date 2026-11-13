@@ -1,5 +1,8 @@
+[System.Flags]
 public enum ElementEffect
 {
-    None,
-    Gold,
+    None = 0,
+    Gold = 1,
+    Critical = 2,
+    InstantKill = 4,
 }

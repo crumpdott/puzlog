@@ -37,7 +37,8 @@ public class ResultManager : MonoBehaviour
         int EnemyMoneyValue = BattleManager.Instance.TmpMoney;
         int PiggyBankValue = PlayerData.PiggyBankTmp;
         PlayerData.PiggyBankTmp = 0;
-        int SumMoneyValue = RemainTimeMoneyValue + EnemyMoneyValue + PiggyBankValue;
+        int calculatedMoney = Mathf.FloorToInt((RemainTimeMoneyValue + EnemyMoneyValue + PiggyBankValue) * PlayerData.IncomeMultiplier);
+        int SumMoneyValue = Mathf.Max(PlayerData.MinimumMoney, PlayerData.Money + calculatedMoney) - PlayerData.Money;
         ResultDialog.SetActive(true);
         RemainTimeMoneyUI.text = RemainTimeMoneyValue.ToString();
         EnemyMoneyUI.text = EnemyMoneyValue.ToString();

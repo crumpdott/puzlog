@@ -9,6 +9,9 @@ public class Element : MonoBehaviour
     public ElementAttribute Attribute = ElementAttribute.None;
     public ElementEffect Effect = ElementEffect.None;
     public GameObject GoldSignifier;
+    public GameObject CriticalSignifier;
+    public GameObject InstantKillSignifier;
+    public bool IsExplosion;
 
     private void Awake()
     {
@@ -17,17 +20,18 @@ public class Element : MonoBehaviour
 
     private void OnMouseDown()
     {
-        PuzzleManager.Instance.ElementDown(this);
+        if (IsExplosion) PuzzleManager.Instance.Explode(this);
+        else PuzzleManager.Instance.ElementDown(this);
     }
 
     private void OnMouseEnter()
     {
-        PuzzleManager.Instance.ElementEnter(this);
+        if (!IsExplosion) PuzzleManager.Instance.ElementEnter(this);
     }
 
     private void OnMouseUp()
     {
-        PuzzleManager.Instance.ElementUp();
+        if (!IsExplosion) PuzzleManager.Instance.ElementUp();
     }
 
     public void SetIsSelect(Boolean isSelect)
@@ -44,9 +48,23 @@ public class Element : MonoBehaviour
 
     private void UpdateEffectSignifier()
     {
+        bool critical = (Effect & ElementEffect.Critical) != 0;
         if (GoldSignifier != null)
         {
-            GoldSignifier.SetActive(Effect == ElementEffect.Gold);
+            GoldSignifier.SetActive((Effect & ElementEffect.Gold) != 0);
+        }
+        if (CriticalSignifier != null)
+        {
+            CriticalSignifier.SetActive(critical);
+        }
+        else
+        {
+            var sprite = GetComponent<SpriteRenderer>();
+            if (sprite != null) sprite.color = critical ? new Color(0.65f, 1f, 1f) : Color.white;
+        }
+        if (InstantKillSignifier != null)
+        {
+            InstantKillSignifier.SetActive((Effect & ElementEffect.InstantKill) != 0);
         }
     }
 }
